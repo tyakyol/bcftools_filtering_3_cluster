@@ -11,6 +11,9 @@ indels = read.delim(input,
 # Remove columns with all NA
 not_any_na = function(x) all(!is.na(x))
 indels = select_if(indels, not_any_na)
+for(i in 3:8) {
+  indels[, i] = as.numeric(indels[, i])
+}
 # Gifu is either 0/0 or 0/1
 indels = indels[indels$X.9.results.sorted_Gifu_R.bam.GT %in% c('0/0', '0/1'), ]
 # MQ >= 40
