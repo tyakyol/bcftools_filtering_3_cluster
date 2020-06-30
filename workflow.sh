@@ -12,14 +12,14 @@ vcftools --vcf ../../InRoot/variant_calling_7/results/20200531_raw_variants.vcf 
 --recode-INFO-all \
 --out results/only_SNPs
 
-# Convert the vcf file for INDEls to tabular form for first filtering
+# Convert the vcf file for INDELs to tabular form for first filtering
 bcftools query -H \
 -f '%CHROM\t%POS\t%QUAL\t%DP\t%HOB\t%MQSB\t%MQ0F\t%MQ[\t%GT\t]\n' \
 results/only_INDELs.recode.vcf > results/first_filtering_INDELs.tsv
 
 # Convert the vcf file for SNPs to tabular form for first filtering
 bcftools query -H \
--f '%CHROM\t%POS\t%QUAL\t%DP\t%MQ[\t%GT\t]\n' \
+-f '%CHROM\t%POS\t%QUAL\t%DP\t%MQ\t%HOB[\t%GT\t]\n' \
 results/only_SNPs.recode.vcf > results/first_filtering_SNPs.tsv
 
 # First filtering: generating INDEL_positions.tsv
