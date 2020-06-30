@@ -28,7 +28,7 @@ for(i in 1:13) {
        main = colnames(snps)[df$V3[i]])
   }
   if(!(df$V3[i] %in% c(3, 4))) {
-  hist(x = as.numeric(snps[, df$V3[i]]), col = 'gold', breaks = 200,
+  hist(x = na.omit(as.numeric(snps[, df$V3[i]])), col = 'gold', breaks = 200,
        xlim = c(df$V1[i], df$V2[i]),
        main = colnames(snps)[df$V3[i]])
   }
